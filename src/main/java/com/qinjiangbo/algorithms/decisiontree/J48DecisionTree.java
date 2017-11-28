@@ -52,6 +52,7 @@ public class J48DecisionTree {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        instances.setClassIndex(instances.numAttributes()-1);
         return instances;
     }
 
@@ -101,6 +102,7 @@ public class J48DecisionTree {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        subset.setClassIndex(subset.numAttributes()-1);
         return subset;
     }
 }
