@@ -1,3 +1,5 @@
+% source: http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29
+
 @RELATION breast
 
 @ATTRIBUTE sample_code_number           NUMERIC
