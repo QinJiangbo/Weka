@@ -1,9 +1,9 @@
 @RELATION iris
 
-@ATTRIBUTE sepallength NUMERIC
-@ATTRIBUTE sepalwidth  NUMERIC
-@ATTRIBUTE petallength NUMERIC
-@ATTRIBUTE petalwidth  NUMERIC
+@ATTRIBUTE sepal_length NUMERIC
+@ATTRIBUTE sepal_width  NUMERIC
+@ATTRIBUTE petal_length NUMERIC
+@ATTRIBUTE petal_width  NUMERIC
 @ATTRIBUTE class       {Iris-setosa,Iris-versicolor,Iris-virginica}
 
 @DATA
