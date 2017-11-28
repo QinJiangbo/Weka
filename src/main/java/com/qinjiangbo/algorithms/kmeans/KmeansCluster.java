@@ -32,7 +32,7 @@ public class KmeansCluster {
     }
 
     /**
-     * 这个方法主要是用来加载数据集的
+     * 加载数据集
      * @param fileName 文件路径
      * @return
      */
@@ -51,7 +51,7 @@ public class KmeansCluster {
     }
 
     /**
-     * 对数据集进行操作
+     * 操作数据集
      * @throws Exception
      */
     public static void process() throws Exception {
