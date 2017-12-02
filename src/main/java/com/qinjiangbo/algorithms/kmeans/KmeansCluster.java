@@ -1,7 +1,6 @@
 package com.qinjiangbo.algorithms.kmeans;
 
 import com.google.common.io.Resources;
-import weka.classifiers.Classifier;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
