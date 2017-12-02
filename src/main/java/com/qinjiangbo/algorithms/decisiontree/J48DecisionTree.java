@@ -4,6 +4,7 @@ import com.google.common.io.Resources;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
+import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import weka.filters.Filter;
@@ -82,6 +83,8 @@ public class J48DecisionTree {
         System.out.println(evaluation.toMatrixString());
         System.out.println(evaluation.toClassDetailsString());
     }
+
+
 
     /**
      * 过滤掉部分属性

@@ -1,6 +1,7 @@
 package com.qinjiangbo.algorithms.kmeans;
 
 import com.google.common.io.Resources;
+import weka.classifiers.Classifier;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
@@ -55,6 +56,13 @@ public class KmeansCluster {
      * @throws Exception
      */
     public static void process() throws Exception {
+        SimpleKMeans kMeans = generateClassifier();
+        // 打印聚类结果
+        System.out.println(kMeans.preserveInstancesOrderTipText());
+        System.out.println(kMeans.toString());
+    }
+
+    public static SimpleKMeans generateClassifier() throws Exception {
         Instances instances = loadDataSet(TRAINING_DATASET_FILENAME);
         // 初始化聚类器
         SimpleKMeans kMeans = new SimpleKMeans();
@@ -62,9 +70,7 @@ public class KmeansCluster {
         kMeans.setNumClusters(3);
         // 开始进行聚类
         kMeans.buildClusterer(instances);
-        // 打印聚类结果
-        System.out.println(kMeans.preserveInstancesOrderTipText());
-        System.out.println(kMeans.toString());
+        return kMeans;
     }
 
 }
