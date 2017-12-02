@@ -62,6 +62,11 @@ public class KmeansCluster {
         System.out.println(kMeans.toString());
     }
 
+    /**
+     * 训练生成分类器
+     * @return
+     * @throws Exception
+     */
     public static SimpleKMeans generateClassifier() throws Exception {
         Instances instances = loadDataSet(TRAINING_DATASET_FILENAME);
         // 初始化聚类器
