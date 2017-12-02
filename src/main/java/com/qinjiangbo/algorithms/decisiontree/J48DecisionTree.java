@@ -4,8 +4,7 @@ import com.google.common.io.Resources;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
-import weka.core.Instance;
-import weka.core.Instances;
+import weka.core.*;
 import weka.core.converters.ArffLoader;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
@@ -30,8 +29,37 @@ public class J48DecisionTree {
 
     public static void main(String[] args) {
         try {
-            // 进行分类
-            process();
+            Instances instances = loadDataSet(TRAINING_DATASET_FILENAME);
+            Classifier j48 = generateClassifier();
+            // 8,10,10,8,7,10,9,7,1
+            Attribute attr01 = instances.attribute("clump_thickness");
+            Attribute attr02 = instances.attribute("uniformity_of_cell_size");
+            Attribute attr03 = instances.attribute("uniformity_of_cell_shape");
+            Attribute attr04 = instances.attribute("marginal_adhesion");
+            Attribute attr05 = instances.attribute("single_epithelial_cell_size");
+            Attribute attr06 = instances.attribute("bare_nuclei");
+            Attribute attr07 = instances.attribute("bland_chromatin");
+            Attribute attr08 = instances.attribute("normal_nucleoli");
+            Attribute attr09 = instances.attribute("mitoses");
+
+            // 创建Instance
+            Instance instance = new DenseInstance(instances.numAttributes());
+            instance.setValue(attr01, 8);
+            instance.setValue(attr02, 10);
+            instance.setValue(attr03, 10);
+            instance.setValue(attr04, 8);
+            instance.setValue(attr05, 7);
+            instance.setValue(attr06, 10);
+            instance.setValue(attr07, 9);
+            instance.setValue(attr08, 7);
+            instance.setValue(attr09, 1);
+            instance.setDataset(instances);
+            double[] distribution = j48.distributionForInstance(instance);
+
+            for (double dist : distribution) {
+                System.out.println(dist);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
