@@ -63,14 +63,7 @@ public class J48DecisionTree {
      */
     public static void process() throws Exception{
         Instances instances = loadDataSet(TRAINING_DATASET_FILENAME);
-        // 去掉第一个属性
-        int[] indices = new int[]{0};
-        // 过滤后的数据集
-        instances = filterAttributes(instances, indices);
-        // 初始化分类器
-        Classifier j48 = new J48();
-        // 训练该数据集
-        j48.buildClassifier(instances);
+        Classifier j48 = generateClassifier();
         // 使用同一个数据集进行交叉验证
         Evaluation evaluation = new Evaluation(instances);
         evaluation.crossValidateModel(j48, instances, 10, new Random(1));
@@ -84,7 +77,22 @@ public class J48DecisionTree {
         System.out.println(evaluation.toClassDetailsString());
     }
 
-
+    /**
+     * 训练生成分类器
+     * @return
+     */
+    public static Classifier generateClassifier() throws Exception{
+        Instances instances = loadDataSet(TRAINING_DATASET_FILENAME);
+        // 去掉第一个属性
+        int[] indices = new int[]{0};
+        // 过滤后的数据集
+        instances = filterAttributes(instances, indices);
+        // 初始化分类器
+        Classifier j48 = new J48();
+        // 训练该数据集
+        j48.buildClassifier(instances);
+        return j48;
+    }
 
     /**
      * 过滤掉部分属性
