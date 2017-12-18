@@ -39,6 +39,8 @@ public class J48DecisionTree {
             // 进行预测
             String classOfData = predict(data, instances);
             System.out.println("class of data is: " + classOfData);
+            // 模型评价
+            process();
         } catch (Exception e) {
             e.printStackTrace();
         }
