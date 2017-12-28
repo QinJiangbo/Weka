@@ -2,6 +2,7 @@ package com.qinjiangbo.algorithms.decisiontree;
 
 import com.google.common.collect.Lists;
 import com.google.common.io.Resources;
+import com.qinjiangbo.util.TrainningModelUtil;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
@@ -74,6 +75,8 @@ public class WatermelonClassifier {
         Classifier j48 = new J48();
         // 训练该数据集
         j48.buildClassifier(instances);
+        // 模型保存
+        TrainningModelUtil.saveModel(j48, "watermelon");
         return j48;
     }
 
@@ -82,7 +85,7 @@ public class WatermelonClassifier {
      * @return
      */
     public static String predict(List<String> data, Instances trainingSet) throws Exception{
-        Classifier j48 = generateClassifier();
+        Classifier j48 = TrainningModelUtil.readModel("watermelon");
         // 创建Instance
         Instance instance = new DenseInstance(trainingSet.numAttributes());
         // 分别添加待预测特征值
